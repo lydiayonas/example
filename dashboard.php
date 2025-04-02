@@ -1,7 +1,7 @@
 <?php 
 include 'db.php'; 
 session_start();
-if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
         $firstName = $_POST['firstName']; 
@@ -99,10 +99,3 @@ if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESS
 </body>
 </html>
 
-<?php 
-}else{
-    header("location: index.php");
-}
-
-
-?>

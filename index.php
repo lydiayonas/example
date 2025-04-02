@@ -1,12 +1,6 @@
 <?php
-
-setcookie("lab_class", "lab class value", time()+3600, "/");
-
 include "db.php";
 session_start();
-if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
-    header("location: dashboard.php");
-}
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['id'] = $user['id'];
         $_SESSION['firstName'] = $user['firstName'];

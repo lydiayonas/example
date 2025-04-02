@@ -11,18 +11,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($user);
-
+    
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['id'] = $user['id'];
         $_SESSION['firstName'] = $user['firstName'];
         $_SESSION['lastName'] = $user['lastName'];
 
-        $last_login = date('d-m-Y H:i:s:a');
-        
-        $stmt2 = $pdo->prepare("INSERT INTO users (last_login_date) VALUES (?)"); 
-        $stmt2->execute([$last_login]); 
-
+        $last_login = date('Y-m-d H:i:s'); // Use a standard format for DATETIME
+        $stmt2 = $pdo->prepare("UPDATE users SET last_login_date = ? WHERE id = ?");
+        $stmt2->execute([$last_login, $user['id']]);
 
         header("location:dashboard.php");
          

@@ -66,13 +66,13 @@ session_start();
         ?><br>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <label for="">First Name</label><br>
-            <input type="text" name="firstName"><br>
+            <input type="text" name="firstName" required><br>
             <label for="">Last Name</label><br>
-            <input type="text" name="lastName"><br>
+            <input type="text" name="lastName" required><br>
             <label for="">Username</label><br>
-            <input type="text" name="username"><br>
+            <input type="text" name="username" required><br>
             <label for="">Password</label><br>
-            <input type="text" name="password"><br><br>
+            <input type="text" name="password" required><br><br>
             <input type="submit">
         </form>
         <br>

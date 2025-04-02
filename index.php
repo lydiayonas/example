@@ -2,6 +2,13 @@
 include "db.php";
 session_start();
 
+// setcookie("section_c", "section_c_lab", time()+3600, "/");
+// echo $_COOKIE["section_c"];
+
+if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
+
+    header("location: dashboard.php");
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars($_POST['username']);

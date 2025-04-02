@@ -1,6 +1,7 @@
 <?php 
 include 'db.php'; 
 session_start();
+if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
@@ -83,12 +84,13 @@ session_start();
                 <th>Username</th>
                 <th>Status</th>
             </thead>
-        <?php foreach ($users as $user): ?> 
+        <?php 
+        foreach ($users as $user): ?> 
             <tbody> 
                 <td><?php echo $user['firstName']; ?></td>
                 <td><?php echo $user['lastName']; ?> </td>
-                <td><?php echo $user['username']; ?> </td>
-                <td><?=  $user['status'] == 1 ? 'Active' : 'Not Active'; ?> </td>
+                <td><?= $user['username'] ?> </td>
+                <td><?=  ($user['status'] == 1) ? 'Active' : 'Not Active'; ?> </td>
                 
                 
             </tbody> 
@@ -99,3 +101,9 @@ session_start();
 </body>
 </html>
 
+<?php 
+}else{
+    header("location: index.php");
+}
+
+?>

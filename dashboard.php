@@ -3,6 +3,7 @@
 // add Edit, Delete, Status functionality, Bootstrap, correct alerts
 include 'db.php';
 session_start();
+if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
 
 if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])) {
 
@@ -86,6 +87,7 @@ if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SES
 
             <?php
             }
+<<<<<<< HEAD
             ?><br>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="border container">
                 <label for="">First Name</label><br>
@@ -130,3 +132,48 @@ if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SES
 } else {
     header("Location: index.php");
 }
+=======
+        ?><br>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <label for="">First Name</label><br>
+            <input type="text" name="firstName" required><br>
+            <label for="">Last Name</label><br>
+            <input type="text" name="lastName" required><br>
+            <label for="">Username</label><br>
+            <input type="text" name="username" required><br>
+            <label for="">Password</label><br>
+            <input type="text" name="password" required><br><br>
+            <input type="submit">
+        </form>
+        <br>
+        <table> 
+            <thead>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Status</th>
+            </thead>
+        <?php 
+        foreach ($users as $user): ?> 
+            <tbody> 
+                <td><?php echo $user['firstName']; ?></td>
+                <td><?php echo $user['lastName']; ?> </td>
+                <td><?= $user['username'] ?> </td>
+                <td><?=  ($user['status'] == 1) ? 'Active' : 'Not Active'; ?> </td>
+                
+                
+            </tbody> 
+            <?php endforeach; ?> 
+        </table> 
+    </div>
+    
+</body>
+</html>
+
+<?php 
+}else{
+    header("location: index.php");
+}
+
+?>
+>>>>>>> c0e3f1fae2a356ee2d651a6a37b2618bfec6dc7e

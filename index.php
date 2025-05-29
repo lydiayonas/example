@@ -2,8 +2,17 @@
 include "db.php";
 session_start();
 
+<<<<<<< HEAD
 if (isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])) {
     header("Location: dashboard.php");
+=======
+// setcookie("section_c", "section_c_lab", time()+3600, "/");
+// echo $_COOKIE["section_c"];
+
+if(isset($_SESSION['firstName']) && isset($_SESSION['lastName']) && isset($_SESSION['id'])){
+
+    header("location: dashboard.php");
+>>>>>>> c0e3f1fae2a356ee2d651a6a37b2618bfec6dc7e
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
